@@ -32,6 +32,7 @@ public class MyListNode {
         ListNode target=new ListNode(val);
 
         target.next=now.next;
+
         now.next=target;
     }
 
