@@ -7,6 +7,10 @@ public class MyArrayList {
 
     private int capacity;
 
+    private int size(){
+        return capacity;
+    }
+
     public MyArrayList() {
         this.length=10;
         arr=new int[10];
@@ -83,5 +87,29 @@ public class MyArrayList {
             newbrr[i]=arr[i];
         }
         return newbrr;
+    }
+
+    public void addAll(MyArrayList list){
+        int l1=this.capacity;
+        int l2=list.size();
+        if ((l1+l2)>this.length)
+            this.arr=extend(arr);
+        for (int i=l1,j=0;j<l2;i++,j++){
+            this.arr[i]=list.getValue(j);
+            capacity++;
+        }
+
+    }
+
+    public void sort(){
+        for (int i = 0; i < capacity-1; i++) {
+            for (int j = 0; j < capacity-1-i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
     }
 }

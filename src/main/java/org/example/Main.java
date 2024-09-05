@@ -1,7 +1,7 @@
 package org.example;
 
 
-import org.example.dsaa.MyListNote.MyListNode;
+import org.example.dsaa.HashMap.MyHashMap;
 
 public class Main {
 
@@ -10,20 +10,21 @@ public class Main {
 
         System.out.println("========================================================");
 
-        MyListNode node = new MyListNode();
-
-        node.printAll();
-        node.add(5);
-        node.add(8);
-        node.add(9);
-
-
-        node.printAll();
-        Boolean delete = node.delete(1);
-        System.out.println(delete);
-
-        node.printAll();
+        MyHashMap myHashMap=new MyHashMap();
+        myHashMap.put(99,"51235");
+       myHashMap.put(123,"575");
+       myHashMap.put(9999,"894");
+       myHashMap.put(811,"123");
+       myHashMap.put(99569456,"222");
 
 
+       myHashMap.remove(888);
+        String string = myHashMap.get(9999);
+        System.out.println(string);
+        myHashMap.printAll();
+
+       // System.out.println(myHashMap.);
+
+        System.out.println(99%100);
     }
 }
