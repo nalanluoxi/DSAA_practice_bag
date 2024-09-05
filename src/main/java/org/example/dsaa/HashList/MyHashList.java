@@ -6,4 +6,6 @@ public class MyHashList {
 
     ListNode listNode;
 
+
+
 }
