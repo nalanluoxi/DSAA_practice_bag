@@ -3,6 +3,8 @@ package org.example.dsaa.MyListNote;
 public class MyListNode {
 
     int size;
+
+
     ListNode head;
 
     public MyListNode() {
