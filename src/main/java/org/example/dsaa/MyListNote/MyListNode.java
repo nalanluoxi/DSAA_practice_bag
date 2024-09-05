@@ -4,7 +4,6 @@ public class MyListNode {
 
     int size;
 
-
     ListNode head;
 
     public MyListNode() {
