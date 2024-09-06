@@ -2,6 +2,7 @@ package org.example;
 
 
 import org.example.dsaa.HashMap.MyHashMap;
+import org.example.dsaa.HashMap.MyHashMapL;
 
 public class Main {
 
@@ -10,21 +11,18 @@ public class Main {
 
         System.out.println("========================================================");
 
-        MyHashMap myHashMap=new MyHashMap();
-        myHashMap.put(99,"51235");
-       myHashMap.put(123,"575");
-       myHashMap.put(9999,"894");
-       myHashMap.put(811,"123");
-       myHashMap.put(99569456,"222");
+        MyHashMapL myHashMapL=new MyHashMapL();
 
+        myHashMapL.add(1,"sdadasdsa");
+        myHashMapL.add(9999,"sdadasdsa");
+        myHashMapL.add(9,"sdadasdsa");
+        myHashMapL.add(999,"sdadasdsa");
+        myHashMapL.add(99,"sdadasdsa");
+        myHashMapL.add(999999999,"sdadasdsa");
 
-       myHashMap.remove(888);
-        String string = myHashMap.get(9999);
-        System.out.println(string);
-        myHashMap.printAll();
+        System.out.println(myHashMapL.get(999));
+        myHashMapL.printAll();
 
-       // System.out.println(myHashMap.);
-
-        System.out.println(99%100);
+        System.out.println("========================================================");
     }
 }
