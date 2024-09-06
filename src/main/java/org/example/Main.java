@@ -14,15 +14,18 @@ public class Main {
         MyHashMapL myHashMapL=new MyHashMapL();
 
         myHashMapL.add(1,"sdadasdsa");
-        myHashMapL.add(9999,"sdadasdsa");
+        myHashMapL.add(9999,"9999");
         myHashMapL.add(9,"sdadasdsa");
         myHashMapL.add(999,"sdadasdsa");
         myHashMapL.add(99,"sdadasdsa");
         myHashMapL.add(999999999,"sdadasdsa");
 
-        System.out.println(myHashMapL.get(999));
+       // System.out.println(myHashMapL.get(999));
         myHashMapL.printAll();
+        System.out.println(myHashMapL.getSize());
 
+        myHashMapL.remove(9999);
+        myHashMapL.printAll();
         System.out.println("========================================================");
     }
 }

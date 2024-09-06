@@ -64,11 +64,13 @@ public class MyHashMapL {
             while (true){
                 if (point.next==null){
                     point.next=tem;
+                    tem.pre=point;
                     break;
                 }
                 point=point.next;
             }
         }
+        size++;
     }
 
     public String get(int key){
@@ -86,6 +88,32 @@ public class MyHashMapL {
             }
         }
         return null;
+    }
+
+    public void remove(int key){
+        int index = hashFun(key);
+        PairNode pairNode = hashArr[index];
+
+        if (pairNode.next==null){
+            hashArr[index]=null;
+            size--;
+            return;
+        }else {
+            PairNode point=pairNode;
+            if (point.key==key){
+                hashArr[index]=point.next;
+                return;
+            }
+            while (point.next!=null){
+                if (point.key==key){
+                    point.pre=point.next;
+                    size--;
+                    break;
+                }
+                point= point.next;
+            }
+        }
+
     }
 
     public void printAll(){

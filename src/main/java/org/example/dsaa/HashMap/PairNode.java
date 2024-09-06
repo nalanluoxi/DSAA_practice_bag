@@ -5,9 +5,12 @@ public class PairNode {
     String val;
     PairNode next;
 
+    PairNode pre;
+
     public PairNode(int key,String val) {
         this.key=key;
         this.val=val;
+        next=pre=null;
     }
 
     public PairNode() {
