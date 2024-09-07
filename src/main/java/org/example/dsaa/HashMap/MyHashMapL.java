@@ -2,7 +2,7 @@ package org.example.dsaa.HashMap;
 
 public class MyHashMapL {
 
-    private PairNode [] hashArr;
+    private PairNode[] hashArr;
     //哈希表
 
     private int capcity;
@@ -14,118 +14,121 @@ public class MyHashMapL {
     private int extend;
     //扩容倍数
 
-    private double load;
+    private  final double load=2.0/3.0;
     //扩容因子
 
-    public int getSize(){
+    public int getSize() {
         return size;
     }
 
-    public double getLoad(){
-        return (double) size/capcity;
+    public double getLoad() {
+        return (double) size / capcity;
     }
 
     public MyHashMapL() {
-        capcity=10;
-        hashArr=new PairNode[10];
-        size=0;
-        extend=2;
-        load=2.0/3.0;
-        for (int i = 0; i < 10; i++) {
-            hashArr[i]=null;
+        capcity = 4;
+        hashArr = new PairNode[capcity];
+        size = 0;
+        extend = 2;
+        for (int i = 0; i < capcity; i++) {
+            hashArr[i] = null;
         }
     }
 
-    public int hashFun(int key){
-        int index=key%capcity;
+    public int hashFun(int key) {
+        int index = key % capcity;
         return index;
     }
 
-    public void extendFun(){
-        capcity*=load;
-        PairNode []newbrr=new PairNode[capcity];
-        for (int i = 0; i < size; i++) {
-            newbrr[i]=hashArr[i];
+    public void extendFun() {
+        capcity *= extend;
+        PairNode[] tembrr = hashArr;
+        hashArr = new PairNode[capcity];
+        size = 0;
+        for (PairNode pair : tembrr) {
+            while (pair != null) {
+                add(pair.key, pair.val);
+                pair = pair.next;
+            }
         }
-        hashArr=newbrr;
     }
 
-    public void add(int key,String val){
-        if (getLoad()>load){
+    public void add(int key, String val) {
+        if (getLoad() > load)
             extendFun();
-        }
         int index = hashFun(key);
-        PairNode tem=new PairNode(key,val);
-        PairNode target = hashArr[index];
-        if (target==null){
-            hashArr[index]=tem;
-        }else {
-            PairNode point=target;
-            while (true){
-                if (point.next==null){
-                    point.next=tem;
-                    tem.pre=point;
+        PairNode point = hashArr[index];
+        if (point == null) {
+            hashArr[index] = new PairNode(key,val);
+        } else {
+            while (true) {
+                if (point.next == null) {
+                    PairNode tem = new PairNode(key, val);
+                    point.next = tem;
+                    tem.pre = point;
                     break;
                 }
-                point=point.next;
+                point = point.next;
             }
         }
         size++;
     }
 
-    public String get(int key){
+    public String get(int key) {
         int index = hashFun(key);
-        PairNode pairNode = hashArr[index];
-        if (pairNode==null){
+        PairNode p = hashArr[index];
+        if (p == null) {
             return null;
-        }else {
-            PairNode p=pairNode;
-            while (p!=null){
-                if (p.key==key){
+        } else {
+            while (p!= null) {
+                if (p.key == key) {
                     return p.val;
                 }
-                p=p.next;
+                p = p.next;
             }
         }
         return null;
     }
 
-    public void remove(int key){
+    public void remove(int key) {
         int index = hashFun(key);
-        PairNode pairNode = hashArr[index];
+        PairNode point= hashArr[index];
+        if (point.next == null) {
+            hashArr[index] = null;
 
-        if (pairNode.next==null){
-            hashArr[index]=null;
-            size--;
-            return;
-        }else {
-            PairNode point=pairNode;
-            if (point.key==key){
-                hashArr[index]=point.next;
+        } else {
+            if (point.key == key) {
+                hashArr[index] = point.next;
                 return;
             }
-            while (point.next!=null){
-                if (point.key==key){
-                    point.pre=point.next;
-                    size--;
+            while (point.next != null) {
+                if (point.key == key) {
+                    point.pre = point.next;
+                    if (point.next!=null){
+                        point.next.pre=point.pre;
+                    }
                     break;
                 }
-                point= point.next;
+                point = point.next;
             }
         }
-
+        size--;
     }
 
-    public void printAll(){
+    public void printAll() {
         System.out.print("[ ");
-        for (PairNode pairNode:hashArr){
-            PairNode p=pairNode;
-            while (p!=null){
-                System.out.print(" \"key:"+p.key+" val:"+p.val+"\" , ");
-                p=p.next;
+        int count = 0;
+        for (PairNode pairNode : hashArr) {
+            PairNode p = pairNode;
+            while (p != null) {
+                System.out.print(" \"key:" + p.key + " val:" + p.val + "\" , ");
+                count++;
+                p = p.next;
             }
         }
         System.out.println("]");
+        System.out.println("容器容量capcity：" + capcity);
+        System.out.println("键值对数size：" + count);
     }
 
 
