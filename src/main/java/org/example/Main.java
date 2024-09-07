@@ -21,7 +21,7 @@ public class Main {
         MyTree mt=new MyTree();
         mt.add(1,1);
         mt.add(2,1);
-        //mt.add(3,9);
+        mt.add(3,9);
         mt.add(4,1);
         mt.add(5,99999);
 
