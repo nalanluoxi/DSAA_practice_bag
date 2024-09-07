@@ -122,8 +122,9 @@ public class MyHashMapL {
             PairNode p = pairNode;
             while (p != null) {
                 System.out.print(" \"key:" + p.key + " val:" + p.val + "\" , ");
-                p = p.next;
                 count++;
+                p = p.next;
+
             }
         }
         System.out.println("]");
