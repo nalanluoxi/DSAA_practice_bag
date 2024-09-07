@@ -10,6 +10,7 @@ public class Main {
 
         System.out.println("========================================================");
 
+
         MyTree mt = new MyTree();
         mt.add(1, 1);
         mt.add(2, 1);
