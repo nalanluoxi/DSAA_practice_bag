@@ -27,9 +27,6 @@ public class Main {
 
         System.out.println("长度："+mt.getSize());
 
-      //  System.out.println(mt.get(3).val);
-
-       // mt.remove(3);
 
         if (mt.get(3)!=null){
             System.out.println(mt.get(3).val);
