@@ -2,49 +2,42 @@ package org.example;
 
 
 import org.example.dsaa.HashMap.MyHashMapL;
+import org.example.dsaa.Tree.MyTree;
+import org.example.dsaa.Tree.TreeNode;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class Main {
 
     public static void main(String[] args) {
 
 
-        System.out.println("========================================================");
-
-
-      /*  MyHashMapOpenAddress mh=new MyHashMapOpenAddress();
-        System.out.println(mh.getSize());
-        mh.put(1,"111");
-        mh.put(11,"111");
-        mh.put(111,"111");
-        mh.put(1111,"111");
-        mh.put(11111,"111");
-
-        mh.printAll();
-        System.out.println(mh.getSize());*/
 
         System.out.println("========================================================");
 
+        MyTree mt=new MyTree();
+        mt.add(1,1);
+        mt.add(2,1);
+        //mt.add(3,9);
+        mt.add(4,1);
+        mt.add(5,99999);
 
-        MyHashMapL ml = new MyHashMapL();
+        System.out.println("长度："+mt.getSize());
 
-        ml.add(1, "1");//
-        ml.add(2, "2");//
-        ml.add(22, "22");//
-        ml.add(222, "222");
-        ml.add(1111, "1111");
-//
-        ml.add(11, "222");//
-        ml.add(11113, "222");//
-        ml.add(19, "222");//
-        ml.add(1999, "222");//
-        ml.add(188888, "222");//
-        ml.add(18, "18");//
+      //  System.out.println(mt.get(3).val);
 
-        ml.printAll();
-        //System.out.println(ml.getSize());
-        System.out.println(ml.get(1));
-        System.out.println(ml.get(11));
-        System.out.println(ml.get(18));
+       // mt.remove(3);
+
+        if (mt.get(3)!=null){
+            System.out.println(mt.get(3).val);
+        }else {
+            System.out.println("不存在");
+        }
+
+        System.out.println("长度:"+mt.getSize());
         System.out.println("========================================================");
 
 
