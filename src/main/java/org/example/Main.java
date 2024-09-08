@@ -15,7 +15,6 @@ public class Main {
         mt.add(3, 9);
         mt.add(4, 1);
         mt.add(5, 99999);
-
         System.out.println("长度：" + mt.getSize());
         if (mt.get(3) != null) {
             System.out.println(mt.get(3).val);
