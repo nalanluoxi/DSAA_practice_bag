@@ -9,6 +9,7 @@ public class MyHeap {
 
     private ArrayList<Integer> maxHeap;
 
+
     private int size;
 
     MyHeap(List<Integer> nums){
