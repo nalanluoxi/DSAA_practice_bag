@@ -2,6 +2,8 @@ package org.example.dsaa.Heap;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class MyHeap {
 
@@ -31,6 +33,7 @@ public class MyHeap {
     private int left(int i) {
         return 2 * i + 1;
     }
+
     //获取右节点索引
     private int right(int i) {
         return 2 * i + 2;
@@ -52,6 +55,7 @@ public class MyHeap {
 
     /**
      * 从上到下堆化
+     *
      * @param i
      */
     private void siftDown(int i) {
@@ -73,6 +77,7 @@ public class MyHeap {
 
     /**
      * 返回堆顶
+     *
      * @return
      */
     public int peek() {
@@ -81,14 +86,17 @@ public class MyHeap {
 
     /**
      * 添加
+     *
      * @param val
      */
     public void push(int val) {
         maxHeap.add(val);
+        sifUp(size() - 1);
     }
 
     /**
      * 从下向上堆化
+     *
      * @param i
      */
     private void sifUp(int i) {
@@ -104,7 +112,8 @@ public class MyHeap {
     }
 
     /**
-     * 出堆
+     * 堆顶出堆
+     *
      * @return
      */
     public int pop() {
@@ -126,4 +135,39 @@ public class MyHeap {
         }
     }
 
+  /*  public static MyHeap topkHeap(int[] nums,int k){
+        MyHeap topK= new MyHeap();
+
+        for (int i = 0; i < k; i++) {
+            topK.push(nums[i]);
+        }
+
+        for (int i =k;i<nums.length;i++){
+            if (nums[i]>topK.peek()){
+                topK.pop();
+                topK.push(nums[i]);
+            }
+        }
+        return topK;
+
+    }
+*/
+
+    public static Queue<Integer> topKHeap(int[] nums, int k) {
+        // 初始化小顶堆
+        Queue<Integer> heap = new PriorityQueue<Integer>();
+        // 将数组的前 k 个元素入堆
+        for (int i = 0; i < k; i++) {
+            heap.offer(nums[i]);
+        }
+        // 从第 k+1 个元素开始，保持堆的长度为 k
+        for (int i = k; i < nums.length; i++) {
+            // 若当前元素大于堆顶元素，则将堆顶元素出堆、当前元素入堆
+            if (nums[i] > heap.peek()) {
+                heap.poll();
+                heap.offer(nums[i]);
+            }
+        }
+        return heap;
+    }
 }
