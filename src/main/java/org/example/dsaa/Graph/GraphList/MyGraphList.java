@@ -91,4 +91,57 @@ public class MyGraphList {
         }
         System.out.println("==============================================");
     }
+
+
+    /**
+     * 广度遍历
+     * @param graph
+     * @param startval
+     * @return
+     */
+    public static List<Integer> graphBFSG(MyGraphList graph,Integer startval){
+        List<Integer> res=new ArrayList<>();
+        //遍历结果索引
+        Queue<Integer> que=new LinkedList<>();
+        //队列实现bfs
+        Set<Integer> visited=new HashSet<>();
+        //记录被遍历过的索引
+        visited.add(startval);
+        que.offer(startval);
+        while (!que.isEmpty()){
+            Integer vel = que.poll();
+            res.add(vel);
+            for (Integer adVet:graph.adjList.get(vel)){
+                if (visited.contains(adVet)){
+                    continue;
+                }
+                que.offer(adVet);
+                visited.add(adVet);
+            }
+        }
+
+
+
+        return res;
+    }
+
+
+    public static List<Integer> graphDFSS(MyGraphList graph,Integer start){
+        List<Integer> res=new ArrayList<>();
+        Set<Integer> visited=new HashSet<>();
+        dfs(graph,visited,res,start);
+        return res;
+    }
+
+    public static void dfs(MyGraphList graph,Set<Integer> visited,List<Integer> res,Integer start){
+        res.add(start);
+        visited.add(start);
+        for (Integer adjVal:graph.adjList.get(start)){
+            if (visited.contains(adjVal)){
+                continue;
+            }
+            dfs(graph,visited,res,adjVal);
+        }
+
+    }
 }

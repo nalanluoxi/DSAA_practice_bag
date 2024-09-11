@@ -1,5 +1,7 @@
 package org.example.dsaa.Graph.GraphList;
 
+import java.util.List;
+
 public class GraphListMain {
     public static void main(String[] args) {
 
@@ -20,6 +22,16 @@ public class GraphListMain {
 
         ml.printEdge();
 
+        List<Integer> list = MyGraphList.graphBFSG(ml, 1);
+        for (int i:list){
+            System.out.print(i+" ");
+        }
+        System.out.println();
+
+        List<Integer> list1 = MyGraphList.graphDFSS(ml, 1);
+        for (int i :list1){
+            System.out.print(i+" ");
+        }
 
     }
 }
