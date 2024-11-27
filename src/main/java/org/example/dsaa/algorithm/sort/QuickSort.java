@@ -2,8 +2,6 @@ package org.example.dsaa.algorithm.sort;
 
 public class QuickSort {
     public static void main(String[] args) {
-
-
         int[] nums = {9,8,7,6,5,4,3,2,1,0};
         int r = nums.length;
         quick(nums, 0, nums.length-1);

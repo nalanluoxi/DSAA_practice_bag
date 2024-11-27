@@ -1,5 +1,8 @@
 package org.example.dsaa.datastructure.heap;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyHeapMain {
     public static void main(String[] args) {
 
@@ -28,10 +31,15 @@ public class MyHeapMain {
         // System.out.println(mh.pop());
         //   System.out.println(mh.pop());
         //   System.out.println(mh.pop());
-        int[] num = {9, 8, 5, 11, 23, 46,872,101,54, 1111, 69, 58};
+      //  int[] num = {9, 8, 5, 11, 23, 46,872,101,54, 1111, 69, 58};
 
-        MyMinHeap myMinHeap = MyMinHeap.topKHeap(num, 3);
-        myMinHeap.printAll();
+        int [] nums={1,1,5,4,3,2};
+        List<Integer>list=new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            list.add(nums[i]);
+        }
+        MyHeap my=new MyHeap(list);
+        my.printAll();
 
     }
 }
